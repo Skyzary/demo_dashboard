@@ -16,12 +16,14 @@ import {
   LogoutOutlined as LogoutIcon,
   UserOutlined as UserIcon,
   SunOutlined,
-  MoonOutlined
+  MoonOutlined,
+  ScheduleOutlined as ScheduleIcon
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { moodleApi } from '../services/api';
 import type { Course, Grade, Assignment, MoodleEvent, Notification, CourseStatistics, CourseModule } from '../types';
 import AssignmentModal from '../components/AssignmentModal';
+import ScheduleView from '../components/ScheduleView';
 import { ThemeContext } from '../App';
 
 const { Header, Content, Sider } = Layout;
@@ -115,6 +117,7 @@ const DashboardPage: React.FC = () => {
     { key: 'courses', icon: <BookIcon />, label: 'Курсы' },
     { key: 'grades', icon: <GradeIcon />, label: 'Оценки' },
     { key: 'assignments', icon: <AssignIcon />, label: 'Задания' },
+    { key: 'schedule', icon: <ScheduleIcon />, label: 'Расписание' },
     { key: 'events', icon: <CalendarIcon />, label: 'События' },
   ];
 
@@ -381,6 +384,7 @@ const DashboardPage: React.FC = () => {
     grades: renderGrades(),
     assignments: renderAssignments(),
     events: renderEvents(),
+    schedule: <ScheduleView />,
   };
 
   return (

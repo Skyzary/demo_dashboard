@@ -1,0 +1,7 @@
+{
+  "name": "demo_dashboard",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r --parallel dev"
+  }
+}

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, Layout, App } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import React, { useState, useContext } from 'react';
+import { Form, Input, Button, Card, Typography, Layout, App, theme } from 'antd';
+import { UserOutlined, LockOutlined, SunOutlined, MoonOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { authApi } from '../services/api';
+import { ThemeContext } from '../App';
 
 const { Title, Text } = Typography;
 const { Content } = Layout;
@@ -11,6 +12,8 @@ const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { message } = App.useApp();
+  const { token } = theme.useToken();
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   const onFinish = async (values: any) => {
     setLoading(true);
@@ -30,7 +33,15 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Layout style={{ minHeight: '100vh', background: '#f0f2f5' }}>
+    <Layout style={{ minHeight: '100vh', background: token.colorBgLayout }}>
+      <div style={{ position: 'absolute', top: 24, right: 24 }}>
+        <Button 
+          type="text" 
+          icon={isDarkMode ? <SunOutlined /> : <MoonOutlined />} 
+          onClick={toggleTheme} 
+          size="large"
+        />
+      </div>
       <Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Card variant="outlined" style={{ width: 400, boxShadow: '0 4px 12px rgba(0,0,0,0.08)', borderRadius: 12 }}>
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
