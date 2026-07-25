@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   backend:
@@ -11,6 +11,6 @@ services:
     build:
       context: ./frontend
     ports:
-      - "8080:80"
+      - "7070:80"
     depends_on:
       - backend

@@ -3,7 +3,9 @@ packages:
   - 'backend'
 
 allowBuilds:
+  '@parcel/watcher': true
   '@scarf/scarf': true
 
 minimumReleaseAgeExclude:
   - lucide-react@1.21.0
+  - sass@1.102.0
